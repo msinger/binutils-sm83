@@ -152,6 +152,7 @@ TARGET_CPU_CFILES = \
 	config/tc-ip2k.c \
 	config/tc-iq2000.c \
 	config/tc-lm32.c \
+	config/tc-lr35902.c \
 	config/tc-m32c.c \
 	config/tc-m32r.c \
 	config/tc-m68hc11.c \
@@ -226,6 +227,7 @@ TARGET_CPU_HFILES = \
 	config/tc-ip2k.h \
 	config/tc-iq2000.h \
 	config/tc-lm32.h \
+	config/tc-lr35902.h \
 	config/tc-m32c.h \
 	config/tc-m32r.h \
 	config/tc-m68hc11.h \

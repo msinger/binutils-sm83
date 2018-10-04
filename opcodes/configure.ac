@@ -276,6 +276,7 @@ if test x${all_targets} = xfalse ; then
 	bfd_epiphany_arch)	ta="$ta epiphany-asm.lo epiphany-desc.lo epiphany-dis.lo epiphany-ibld.lo epiphany-opc.lo" using_cgen=yes ;;
 	bfd_iq2000_arch)	ta="$ta iq2000-asm.lo iq2000-desc.lo iq2000-dis.lo iq2000-ibld.lo iq2000-opc.lo" using_cgen=yes ;;
 	bfd_lm32_arch)		ta="$ta lm32-asm.lo lm32-desc.lo lm32-dis.lo lm32-ibld.lo lm32-opc.lo lm32-opinst.lo" using_cgen=yes ;;
+	bfd_lr35902_arch)	ta="$ta lr35902-dis.lo" ;;
 	bfd_m32c_arch)		ta="$ta m32c-asm.lo m32c-desc.lo m32c-dis.lo m32c-ibld.lo m32c-opc.lo" using_cgen=yes ;;
 	bfd_m32r_arch)		ta="$ta m32r-asm.lo m32r-desc.lo m32r-dis.lo m32r-ibld.lo m32r-opc.lo m32r-opinst.lo" using_cgen=yes ;;
 	bfd_m68hc11_arch)	ta="$ta m68hc11-dis.lo m68hc11-opc.lo" ;;
