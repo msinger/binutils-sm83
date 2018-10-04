@@ -136,6 +136,11 @@ void md_begin(void)
   linkrelax = 0;
 }
 
+void lr35902_md_end(void)
+{
+  bfd_set_arch_mach(stdoutput, TARGET_ARCH, 0);
+}
+
 static const char *skip_space(const char *s)
 {
   while (*s == ' ' || *s == '\t')
