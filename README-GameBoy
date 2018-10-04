@@ -1,0 +1,3 @@
+./configure --prefix=~/gameboy-dev --target=lr35902-gb-coff
+make all
+make install
