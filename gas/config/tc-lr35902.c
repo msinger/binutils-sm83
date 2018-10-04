@@ -136,11 +136,6 @@ void md_begin(void)
   linkrelax = 0;
 }
 
-void lr35902_md_end(void)
-{
-  bfd_set_arch_mach(stdoutput, TARGET_ARCH, bfd_mach_lr35902);
-}
-
 static const char *skip_space(const char *s)
 {
   while (*s == ' ' || *s == '\t')
@@ -955,7 +950,6 @@ static void parse_sp_index(expressionS *op)
 static void emit_ldreg(int dest, expressionS *src)
 {
   char *q;
-  int  rnum;
 
   switch (dest)
   {
@@ -1019,7 +1013,7 @@ static void emit_ldreg(int dest, expressionS *src)
     }
     if (src->X_op == O_md1)
     {
-      expressionS src_offset = src;
+      expressionS src_offset = *src;
       src_offset.X_op = O_symbol;
       q = frag_more(1);
       *q = 0xF8;

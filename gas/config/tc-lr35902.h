@@ -51,11 +51,9 @@
   (as_fatal(_("estimate_size_before_relax called")), 1)
 
 /* Define some functions to be called by generic code.  */
-#define md_end               lr35902_md_end
 #define md_start_line_hook() { if (lr35902_start_line_hook()) continue; }
 #define TC_CONS_FIX_NEW(f,w,s,e,r)  lr35902_cons_fix_new((f), (w), (s), (e))
 
-extern void lr35902_md_end(void);
 extern int lr35902_start_line_hook(void);
 extern void lr35902_cons_fix_new(fragS *, int, int, expressionS *);
 
