@@ -681,6 +681,7 @@ extern const bfd_target l1om_elf64_vec;
 extern const bfd_target l1om_elf64_fbsd_vec;
 extern const bfd_target lm32_elf32_vec;
 extern const bfd_target lm32_elf32_fdpic_vec;
+extern const bfd_target lr35902_coff_vec;
 extern const bfd_target m32c_elf32_vec;
 extern const bfd_target m32r_elf32_vec;
 extern const bfd_target m32r_elf32_le_vec;
@@ -1037,6 +1038,8 @@ static const bfd_target * const _bfd_target_vector[] =
 #endif
 
 	&lm32_elf32_vec,
+
+	&lr35902_coff_vec,
 
 	&m32c_elf32_vec,
 
