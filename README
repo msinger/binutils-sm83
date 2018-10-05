@@ -1,47 +1,91 @@
-		   README for GNU development tools
+Binutils for GameBoy
+====================
 
-This directory contains various GNU compilers, assemblers, linkers, 
-debuggers, etc., plus their support routines, definitions, and documentation.
 
-If you are receiving this as part of a GDB release, see the file gdb/README.
-If with a binutils release, see binutils/README;  if with a libg++ release,
-see libg++/README, etc.  That'll give you info about this
-package -- supported targets, how to use it, how to report bugs, etc.
+Build binutils like this:
 
-It is now possible to automatically configure and build a variety of
-tools with one command.  To build all of the tools contained herein,
-run the ``configure'' script here, e.g.:
+  ./configure --prefix=~/gameboy-dev --target=lr35902-gb-coff
+  make all
+  make install
 
-	./configure 
-	make
 
-To install them (by default in /usr/local/bin, /usr/local/lib, etc),
-then do:
-	make install
+Example file:
 
-(If the configure script can't determine your type of computer, give it
-the name as an argument, for instance ``./configure sun4''.  You can
-use the script ``config.sub'' to test whether a name is recognized; if
-it is, config.sub translates it to a triplet specifying CPU, vendor,
-and OS.)
+  ; Handler for RST28 instruction (max. 8 bytes)
+  .section .rst28
+    ret
 
-If you have more than one compiler on your system, it is often best to
-explicitly set CC in the environment before running configure, and to
-also set CC when running make.  For example (assuming sh/bash/ksh):
+  ; Handler for interrupt 4 (joypad) (max. 8 bytes)
+  .section .irq4
+    reti
 
-	CC=gcc ./configure
-	make
+  ; Entry point (max. 4 bytes)
+  .section .entry
+    nop
+    jp start
 
-A similar example using csh:
+  ; GameBoy Header
+  .section .hdrlogo
+    .db 0xCE, 0xED, 0x66, 0x66, 0xCC, 0x0D, 0x00, 0x0B, 0x03, 0x73, 0x00, 0x83, 0x00, 0x0C, 0x00, 0x0D
+    .db 0x00, 0x08, 0x11, 0x1F, 0x88, 0x89, 0x00, 0x0E, 0xDC, 0xCC, 0x6E, 0xE6, 0xDD, 0xDD, 0xD9, 0x99
+    .db 0xBB, 0xBB, 0x67, 0x63, 0x6E, 0x0E, 0xEC, 0xCC, 0xDD, 0xDC, 0x99, 0x9F, 0xBB, 0xB9, 0x33, 0x3E
+  .section .hdrname
+    .db "hram-rw"
+  .section .hdrgc
+    .db "TEST"
+  .section .hdrcgb
+    .db 0x00
+  .section .hdrmc
+    .db "ZZ"
+  .section .hdrsgb
+    .db 0x00
+  .section .hdrtype
+    .db 0x08
+  .section .hdrrom
+    .db 0x00
+  .section .hdrram
+    .db 0x02
+  .section .hdrdest
+    .db 0x01
+  .section .hdrver
+    .db 0x00
 
-	setenv CC gcc
-	./configure
-	make
+  ; Code for Bank 0 (starts at 0x150)
+  .section .bank0
+  start:
+  .global start
+    di
 
-Much of the code and documentation enclosed is copyright by
-the Free Software Foundation, Inc.  See the file COPYING or
-COPYING.LIB in the various directories, for a description of the
-GNU General Public License terms under which you can copy the files.
+    call foo  ; call routine in bank 1
 
-REPORTING BUGS: Again, see gdb/README, binutils/README, etc., for info
-on where and how to report problems.
+    ; Copy routine for initializing HRAM
+    ld c, _ehdata
+    ld hl, __load_stop_hdata - 1
+  loop:
+    ld a, _hdata - 1
+    dec c
+    cp c
+    jp z, loop2  ; jumps to address 0xff80
+    ldd a, (hl)
+    ldh (c), a
+    jr loop
+
+  ; Code loaded into HRAM (starts at 0xff80)
+  .section .hdata
+  loop2:
+    jr loop2
+
+  ; Code for Bank 1 (starts at 0x4000)
+  .section bank1
+  foo:
+    rst 0x28  ; call reset 0x28 handler
+    ret
+
+
+Build example with:
+
+  ~/gameboy-dev/usr/local/bin/lr35902-gb-coff-as -o example.o example.s
+  ~/gameboy-dev/usr/local/bin/lr35902-gb-coff-ld -o example.gb example.o
+
+Then use rgbfix from the Rednex Game Boy Development System (rgbds):
+  rgbfix -fhg example.gb
