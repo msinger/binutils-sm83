@@ -38,7 +38,7 @@ MAKEINFOFLAGS=--split-size=5000000
 # Support for building net releases
 
 # Files in root used in any net release.
-DEVO_SUPPORT="README Makefile.in configure configure.ac \
+DEVO_SUPPORT="README README-binutils Makefile.in configure configure.ac \
 	config.guess config.sub config move-if-change \
 	COPYING COPYING.LIB install-sh config-ml.in symlink-tree \
 	mkinstalldirs ltmain.sh missing ylwrap \
