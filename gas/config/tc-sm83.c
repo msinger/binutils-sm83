@@ -666,13 +666,11 @@ static const char *emit_jp(char prefix, char opcode, const char *args)
   expressionS addr;
   const char  *p;
   char        *q;
-  int         rnum;
 
   p = parse_exp(args, &addr);
-  if (addr.X_md)
+  if (O_register == addr.X_op)
   {
-    rnum = addr.X_add_number;
-    if ((O_register == addr.X_op) && (REG_HL == rnum))
+    if (REG_HL == addr.X_add_number)
     {
       q = frag_more(1);
       *q = prefix;
@@ -682,6 +680,8 @@ static const char *emit_jp(char prefix, char opcode, const char *args)
   }
   else
   {
+    if (addr.X_md)
+      ill_op();
     q = frag_more(1);
     *q = opcode;
     emit_word(&addr);
