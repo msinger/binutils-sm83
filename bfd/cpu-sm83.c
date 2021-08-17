@@ -28,7 +28,7 @@ const bfd_arch_info_type bfd_sm83_arch =
     16,                     /* ptr size */
     8,                      /* byte size */
     bfd_arch_sm83,          /* enum bfd_architecture arch */
-    NULL,                   /* Machine value, used to distinguish between variants */
+    0,                      /* Machine value, used to distinguish between variants */
     "sm83",                 /* Architecture name (short version) */
     "sm83",                 /* Architecture name (long version) */
     0,                      /* Section alignment power */
