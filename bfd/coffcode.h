@@ -2145,9 +2145,9 @@ coff_set_arch_mach_hook (bfd *abfd, void * filehdr)
 	}
       break;
 #endif
-#ifdef LR35902MAGIC
-    case LR35902MAGIC:
-      arch = bfd_arch_lr35902;
+#ifdef SM83MAGIC
+    case SM83MAGIC:
+      arch = bfd_arch_sm83;
       break;
 #endif
 #ifdef Z80MAGIC
@@ -2645,9 +2645,9 @@ coff_set_flags (bfd * abfd,
 {
   switch (bfd_get_arch (abfd))
     {
-#ifdef LR35902MAGIC
-    case bfd_arch_lr35902:
-      *magicp = LR35902MAGIC;
+#ifdef SM83MAGIC
+    case bfd_arch_sm83:
+      *magicp = SM83MAGIC;
       return TRUE;
 #endif
 

@@ -156,7 +156,6 @@ TARGET_LIBOPCODES_CFILES = \
 	lm32-ibld.c \
 	lm32-opc.c \
 	lm32-opinst.c \
-	lr35902-dis.c \
 	m10200-dis.c \
 	m10200-opc.c \
 	m10300-dis.c \
@@ -230,6 +229,7 @@ TARGET_LIBOPCODES_CFILES = \
 	score-dis.c \
 	score7-dis.c \
 	sh-dis.c \
+	sm83-dis.c \
 	sparc-dis.c \
 	sparc-opc.c \
 	spu-dis.c \

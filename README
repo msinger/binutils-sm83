@@ -4,8 +4,9 @@ Binutils for GameBoy
 
 Build binutils like this:
 
-  ./configure --prefix=~/gameboy-dev --target=lr35902-gb-coff
+  ./configure --target=sm83-gb-coff
   make all
+  # as root:
   make install
 
 
@@ -84,8 +85,8 @@ Example file:
 
 Build example with:
 
-  ~/gameboy-dev/usr/local/bin/lr35902-gb-coff-as -o example.o example.s
-  ~/gameboy-dev/usr/local/bin/lr35902-gb-coff-ld -o example.gb example.o
+  sm83-gb-coff-as -o example.o example.s
+  sm83-gb-coff-ld -o example.gb example.o
 
 Then use rgbfix from the Rednex Game Boy Development System (rgbds):
   rgbfix -fhg example.gb

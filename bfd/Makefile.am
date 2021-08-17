@@ -117,7 +117,6 @@ ALL_MACHINES = \
 	cpu-ip2k.lo \
 	cpu-iq2000.lo \
 	cpu-lm32.lo \
-	cpu-lr35902.lo \
 	cpu-m10200.lo \
 	cpu-m10300.lo \
 	cpu-m32c.lo \
@@ -154,6 +153,7 @@ ALL_MACHINES = \
 	cpu-s390.lo \
 	cpu-score.lo \
 	cpu-sh.lo \
+	cpu-sm83.lo \
 	cpu-sparc.lo \
 	cpu-spu.lo \
 	cpu-tic30.lo \
@@ -203,7 +203,6 @@ ALL_MACHINES_CFILES = \
 	cpu-ip2k.c \
 	cpu-iq2000.c \
 	cpu-lm32.c \
-	cpu-lr35902.c \
 	cpu-m10200.c \
 	cpu-m10300.c \
 	cpu-m32c.c \
@@ -240,6 +239,7 @@ ALL_MACHINES_CFILES = \
 	cpu-s390.c \
 	cpu-score.c \
 	cpu-sh.c \
+	cpu-sm83.c \
 	cpu-sparc.c \
 	cpu-spu.c \
 	cpu-tic30.c \
@@ -271,10 +271,10 @@ BFD32_BACKENDS = \
 	cf-i386lynx.lo \
 	coff-go32.lo \
 	coff-i386.lo \
-	coff-lr35902.lo \
 	coff-mips.lo \
 	coff-rs6000.lo \
 	coff-sh.lo \
+	coff-sm83.lo \
 	coff-stgo32.lo \
 	coff-tic30.lo \
 	coff-tic4x.lo \
@@ -409,10 +409,10 @@ BFD32_BACKENDS_CFILES = \
 	cf-i386lynx.c \
 	coff-go32.c \
 	coff-i386.c \
-	coff-lr35902.c \
 	coff-mips.c \
 	coff-rs6000.c \
 	coff-sh.c \
+	coff-sm83.c \
 	coff-stgo32.c \
 	coff-tic30.c \
 	coff-tic4x.c \

@@ -16,7 +16,7 @@ cat <<"EOF"
  * If bank1 and one additional switchable bank are the only two switchable
  * banks being used, and there is data to be loaded from .text1 to .data or
  * .hdata, then you may encounter a linker error like this:
- *   lr35902-gb-coff-ld: section .text1 VMA [0000000000004020,0000000000007fff]
+ *   sm83-gb-coff-ld: section .text1 VMA [0000000000004020,0000000000007fff]
  *   overlaps section .text2 VMA [0000000000004000,0000000000007fff]
  * In this case, the starting VMA of .text1 and .text2 are different, but
  * the sections overlap. The linker will complain about this overlap, but
@@ -29,7 +29,7 @@ cat <<"EOF"
 
 /* Create a GameBoy executable. */
 OUTPUT_FORMAT("binary")
-OUTPUT_ARCH("lr35902")
+OUTPUT_ARCH("sm83")
 
 MEMORY
 {

@@ -516,7 +516,7 @@ DESCRIPTION
 .  bfd_arch_nfp,       {* Netronome Flow Processor *}
 .#define bfd_mach_nfp3200	0x3200
 .#define bfd_mach_nfp6000	0x6000
-.  bfd_arch_lr35902,   {* GameBoy CPU Sharp LR35902 *}
+.  bfd_arch_sm83,      {* GameBoy CPU Sharp SM83 (LR35902) *}
 .  bfd_arch_last
 .  };
 */
@@ -587,7 +587,6 @@ extern const bfd_arch_info_type bfd_iq2000_arch;
 extern const bfd_arch_info_type bfd_k1om_arch;
 extern const bfd_arch_info_type bfd_l1om_arch;
 extern const bfd_arch_info_type bfd_lm32_arch;
-extern const bfd_arch_info_type bfd_lr35902_arch;
 extern const bfd_arch_info_type bfd_m32c_arch;
 extern const bfd_arch_info_type bfd_m32r_arch;
 extern const bfd_arch_info_type bfd_m68hc11_arch;
@@ -626,6 +625,7 @@ extern const bfd_arch_info_type bfd_rx_arch;
 extern const bfd_arch_info_type bfd_s390_arch;
 extern const bfd_arch_info_type bfd_score_arch;
 extern const bfd_arch_info_type bfd_sh_arch;
+extern const bfd_arch_info_type bfd_sm83_arch;
 extern const bfd_arch_info_type bfd_sparc_arch;
 extern const bfd_arch_info_type bfd_spu_arch;
 extern const bfd_arch_info_type bfd_tic30_arch;
@@ -678,7 +678,6 @@ static const bfd_arch_info_type * const bfd_archures_list[] =
     &bfd_k1om_arch,
     &bfd_l1om_arch,
     &bfd_lm32_arch,
-    &bfd_lr35902_arch,
     &bfd_m32c_arch,
     &bfd_m32r_arch,
     &bfd_m68hc11_arch,
@@ -714,6 +713,7 @@ static const bfd_arch_info_type * const bfd_archures_list[] =
     &bfd_s390_arch,
     &bfd_score_arch,
     &bfd_sh_arch,
+    &bfd_sm83_arch,
     &bfd_sparc_arch,
     &bfd_spu_arch,
     &bfd_tic30_arch,

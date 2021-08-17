@@ -1,4 +1,4 @@
-/* Print Sharp LR35902 instructions
+/* Print Sharp SM83 instructions
    Copyright (C) 2005-2018 Free Software Foundation, Inc.
 
    This file is part of the GNU opcodes library.
@@ -354,7 +354,7 @@ static struct tab_elt opc_main[] =
   { 0x00, 0x00, prt, "????" }
 } ;
 
-int print_insn_lr35902(bfd_vma addr, disassemble_info *info)
+int print_insn_sm83(bfd_vma addr, disassemble_info *info)
 {
   struct tab_elt *p;
   struct buffer  buf;

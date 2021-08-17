@@ -64,16 +64,16 @@
 #endif
 #endif
 
-#ifdef TC_LR35902
-#include "coff/lr35902.h"
-#define TARGET_FORMAT "coff-lr35902"
-#endif
-
 #ifdef TC_M68K
 #include "coff/m68k.h"
 #ifndef TARGET_FORMAT
 #define TARGET_FORMAT "coff-m68k"
 #endif
+#endif
+
+#ifdef TC_SM83
+#include "coff/sm83.h"
+#define TARGET_FORMAT "coff-sm83"
 #endif
 
 #ifdef TC_Z80

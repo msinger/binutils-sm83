@@ -47,7 +47,6 @@
 #define ARCH_ip2k
 #define ARCH_iq2000
 #define ARCH_lm32
-#define ARCH_lr35902
 #define ARCH_m32c
 #define ARCH_m32r
 #define ARCH_m68hc11
@@ -80,6 +79,7 @@
 #define ARCH_s390
 #define ARCH_score
 #define ARCH_sh
+#define ARCH_sm83
 #define ARCH_sparc
 #define ARCH_spu
 #define ARCH_tic30
@@ -230,11 +230,6 @@ disassembler (enum bfd_architecture a,
 #ifdef ARCH_lm32
     case bfd_arch_lm32:
       disassemble = print_insn_lm32;
-      break;
-#endif
-#ifdef ARCH_lr35902
-    case bfd_arch_lr35902:
-      disassemble = print_insn_lr35902;
       break;
 #endif
 #ifdef ARCH_m32r
@@ -407,6 +402,11 @@ disassembler (enum bfd_architecture a,
 #ifdef ARCH_sh
     case bfd_arch_sh:
       disassemble = print_insn_sh;
+      break;
+#endif
+#ifdef ARCH_sm83
+    case bfd_arch_sm83:
+      disassemble = print_insn_sm83;
       break;
 #endif
 #ifdef ARCH_sparc

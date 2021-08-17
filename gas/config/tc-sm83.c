@@ -1,4 +1,4 @@
-/* tc-lr35902.c -- Assemble code for the Sharp LR35902 (GameBoy CPU)
+/* tc-sm83.c -- Assemble code for the Sharp SM83 (GameBoy CPU)
    Copyright (C) 2005-2018 Free Software Foundation, Inc.
 
    This file is part of GAS, the GNU Assembler.
@@ -136,7 +136,7 @@ void md_begin(void)
   linkrelax = 0;
 }
 
-void lr35902_md_end(void)
+void sm83_md_end(void)
 {
   bfd_set_arch_mach(stdoutput, TARGET_ARCH, 0);
 }
@@ -150,7 +150,7 @@ static const char *skip_space(const char *s)
 
 /* A non-zero return-value causes a continue in the
    function read_a_source_file() in ../read.c. */
-int lr35902_start_line_hook(void)
+int sm83_start_line_hook(void)
 {
   char *p, quote;
   char buf[4];
@@ -432,7 +432,7 @@ static const char *emit_insn(char prefix, char opcode, const char *args)
   return args;
 }
 
-void lr35902_cons_fix_new(fragS *frag_p, int offset, int nbytes, expressionS *exp)
+void sm83_cons_fix_new(fragS *frag_p, int offset, int nbytes, expressionS *exp)
 {
   bfd_reloc_code_real_type r[4] =
   {
@@ -1284,7 +1284,7 @@ const pseudo_typeS md_pseudo_table[] =
   { "ds",    s_space,          1 }, /* Fill with bytes rather than words. */
   { "dw",    cons,             2 },
   { "psect", obj_coff_section, 0 }, /* TODO: Translate attributes. */
-  { "set",   NULL,             0 }, /* Real instruction on Z80 (and LR35902). */
+  { "set",   NULL,             0 }, /* Real instruction on Z80 (and SM83). */
   { NULL,    NULL,             0 }
 } ;
 

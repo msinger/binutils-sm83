@@ -800,7 +800,6 @@ ALL_EMULATION_SOURCES = \
 	ei386nto.c \
 	ei386pe.c \
 	ei386pe_posix.c \
-	elr35902.c \
 	em32relf.c \
 	em32relf_linux.c \
 	em32rlelf.c \
@@ -852,6 +851,7 @@ ALL_EMULATION_SOURCES = \
 	eshlelf_nto.c \
 	eshlelf_vxworks.c \
 	eshpe.c \
+	esm83.c \
 	etic30aout.c \
 	etic30coff.c \
 	etic3xcoff.c \
@@ -1423,7 +1423,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ei386pe.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ei386pe_posix.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ei386pep.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/elr35902.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/em32relf.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/em32relf_linux.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/em32rlelf.Po@am__quote@
@@ -1477,6 +1476,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/eshlelf_nto.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/eshlelf_vxworks.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/eshpe.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/esm83.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/etic30aout.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/etic30coff.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/etic3xcoff.Po@am__quote@
@@ -3002,9 +3002,6 @@ ei386pe_posix.c: $(srcdir)/emulparams/i386pe_posix.sh \
 ei386pep.c: $(srcdir)/emulparams/i386pep.sh \
   $(srcdir)/emultempl/pep.em $(srcdir)/scripttempl/pep.sc ${GEN_DEPENDS}
 
-elr35902.c: $(srcdir)/emulparams/lr35902.sh \
-  $(srcdir)/emultempl/generic.em $(srcdir)/scripttempl/lr35902.sc ${GEN_DEPENDS}
-
 em32relf.c: $(srcdir)/emulparams/m32relf.sh \
   $(ELF_DEPS) $(srcdir)/scripttempl/elf.sc ${GEN_DEPENDS}
 
@@ -3238,6 +3235,9 @@ eshlelf_vxworks.c: $(srcdir)/emulparams/shlelf_vxworks.sh \
 
 eshpe.c: $(srcdir)/emulparams/shpe.sh \
   $(srcdir)/emultempl/pe.em $(srcdir)/scripttempl/pe.sc ${GEN_DEPENDS}
+
+esm83.c: $(srcdir)/emulparams/sm83.sh \
+  $(srcdir)/emultempl/generic.em $(srcdir)/scripttempl/sm83.sc ${GEN_DEPENDS}
 
 etic30aout.c: $(srcdir)/emulparams/tic30aout.sh \
   $(srcdir)/emultempl/generic.em $(srcdir)/scripttempl/tic30aout.sc ${GEN_DEPENDS}
