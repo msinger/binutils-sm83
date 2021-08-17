@@ -56,8 +56,9 @@ struct reg_entry
   int        number;
 };
 
-#define R_STACKABLE (0x80)
-#define R_ARITH     (0x40)
+#define R_STACKABLE   (0x80)
+#define R_ARITH       (0x40)
+#define R_POST_INCDEC (0x20)
 
 #define REG_A (7)
 #define REG_B (0)
@@ -68,27 +69,31 @@ struct reg_entry
 #define REG_L (5)
 #define REG_F (6 | 8)
 
-#define REG_AF (3 | R_STACKABLE)
-#define REG_BC (0 | R_STACKABLE | R_ARITH)
-#define REG_DE (1 | R_STACKABLE | R_ARITH)
-#define REG_HL (2 | R_STACKABLE | R_ARITH)
-#define REG_SP (3 | R_ARITH)
+#define REG_AF  (3 | R_STACKABLE)
+#define REG_BC  (0 | R_STACKABLE | R_ARITH)
+#define REG_DE  (1 | R_STACKABLE | R_ARITH)
+#define REG_HL  (2 | R_STACKABLE | R_ARITH)
+#define REG_SP  (3 | R_ARITH)
+#define REG_HLI (2 | R_POST_INCDEC)
+#define REG_HLD (3 | R_POST_INCDEC)
 
 static const struct reg_entry regtable[] =
 {
-  {"a",  REG_A },
-  {"af", REG_AF },
-  {"b",  REG_B },
-  {"bc", REG_BC },
-  {"c",  REG_C },
-  {"d",  REG_D },
-  {"de", REG_DE },
-  {"e",  REG_E },
-  {"f",  REG_F },
-  {"h",  REG_H },
-  {"hl", REG_HL },
-  {"l",  REG_L },
-  {"sp", REG_SP },
+  {"a",   REG_A },
+  {"af",  REG_AF },
+  {"b",   REG_B },
+  {"bc",  REG_BC },
+  {"c",   REG_C },
+  {"d",   REG_D },
+  {"de",  REG_DE },
+  {"e",   REG_E },
+  {"f",   REG_F },
+  {"h",   REG_H },
+  {"hl",  REG_HL },
+  {"hld", REG_HLD },
+  {"hli", REG_HLI },
+  {"l",   REG_L },
+  {"sp",  REG_SP },
 };
 
 #define BUFLEN 8 /* Large enough for any keyword. */
@@ -1001,6 +1006,14 @@ static void emit_ldreg(int dest, expressionS *src)
       break;
     }
 
+    if (src->X_md && src->X_op == O_register &&
+        (src->X_add_number & R_POST_INCDEC))
+    {
+      q = frag_more(1);
+      *q = 0x2A + ((src->X_add_number & 1) << 4);
+      break;
+    }
+
     /* Fall through. */
   case REG_B:
   case REG_C:
@@ -1105,6 +1118,16 @@ static const char *emit_ld(char prefix_in ATTRIBUTE_UNUSED,
         {
           q = frag_more(1);
           *q = 0xE2;
+        }
+        else
+          ill_op();
+        break;
+      case REG_HLI:
+      case REG_HLD:
+        if (!src.X_md && src.X_op == O_register && src.X_add_number == REG_A)
+        {
+          q = frag_more(1);
+          *q = 0x22 + ((dst.X_add_number & 1) << 4);
         }
         else
           ill_op();
