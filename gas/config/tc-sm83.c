@@ -1124,6 +1124,26 @@ static const char *emit_ld(char prefix_in ATTRIBUTE_UNUSED,
   return p;
 }
 
+static const char *emit_ldhl(char prefix ATTRIBUTE_UNUSED, char opcode, const char *args)
+{
+  expressionS term;
+  const char  *p;
+  char        *q;
+
+  p = parse_exp(args, &term);
+  if (*p++ != ',')
+    error (_("bad instruction syntax"));
+  if (term.X_md || term.X_op != O_register || term.X_add_number != REG_SP)
+    ill_op();
+
+  p = parse_exp(p, &term);
+  q = frag_more(1);
+  *q = opcode;
+  emit_byte(&term, BFD_RELOC_Z80_DISP8);
+
+  return p;
+}
+
 static const char *emit_ldh(char prefix ATTRIBUTE_UNUSED,
                             char opcode ATTRIBUTE_UNUSED,
                             const char *args)
@@ -1326,6 +1346,7 @@ static table_t instab[] =
   { "ld",   0x00, 0x00, emit_ld },
   { "ldd",  0x32, 0x3A, emit_ldid },
   { "ldh",  0x00, 0x00, emit_ldh },
+  { "ldhl", 0x00, 0xF8, emit_ldhl },
   { "ldi",  0x22, 0x2A, emit_ldid },
   { "nop",  0x00, 0x00, emit_insn },
   { "or",   0x00, 0xB0, emit_s },
