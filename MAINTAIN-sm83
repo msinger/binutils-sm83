@@ -1,0 +1,24 @@
+On CentOS 7, autotools are too old. Need to install newer version with:
+ yum install autotools-latest
+
+Autoreconf binutils this way:
+ # cd <binutils-project-topdir>
+ scl enable autotools-latest autoreconf
+ cd bfd
+ scl enable autotools-latest autoreconf
+ cd ..
+ cd opcodes
+ scl enable autotools-latest autoreconf
+ cd ..
+ cd gas
+ scl enable autotools-latest autoreconf
+ cd ..
+ cd ld
+ scl enable autotools-latest autoreconf
+ cd ..
+ rm -rf Makefile bfd/autom4te.cache/ bfd/config.cache bfd/config.log config.log config.status gas/autom4te.cache/ \
+        intl/Makefile intl/config.cache intl/config.h intl/config.intl intl/config.log intl/config.status \
+        ld/autom4te.cache/ libiberty/Makefile libiberty/config.cache libiberty/config.h libiberty/config.log \
+        libiberty/config.status libiberty/stamp-h libiberty/testsuiteMakefile opcodes/autom4te.cache/ serdep.tmp \
+        autom4te.cache/ binutils/config.cache zlib/config.cache etc/config.cache opcodes/config.cache gprof/config.cache \
+        gas/config.cache ld/config.cache
