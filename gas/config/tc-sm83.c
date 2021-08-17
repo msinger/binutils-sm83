@@ -804,6 +804,23 @@ static const char *emit_add(char prefix, char opcode, const char *args)
   return p;
 }
 
+static const char *emit_sub(char prefix ATTRIBUTE_UNUSED, char opcode, const char *args)
+{
+  expressionS term;
+  const char  *p;
+
+  p = parse_exp(args, &term);
+  if (*p == ',')
+  {
+    p++;
+    if (term.X_md || term.X_op != O_register || term.X_add_number != REG_A)
+      ill_op();
+    p = parse_exp(p, &term);
+  }
+  emit_sx(0, opcode, &term);
+  return p;
+}
+
 static const char *emit_bit(char prefix, char opcode, const char *args)
 {
   expressionS b;
@@ -1333,7 +1350,7 @@ static table_t instab[] =
   { "sra",  0xCB, 0x28, emit_m },
   { "srl",  0xCB, 0x38, emit_m },
   { "stop", 0x00, 0x10, emit_insn },
-  { "sub",  0x00, 0x90, emit_s },
+  { "sub",  0x00, 0x90, emit_sub },
   { "swap", 0xCB, 0x30, emit_m },
   { "xor",  0x00, 0xA8, emit_s }
 } ;
