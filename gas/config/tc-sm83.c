@@ -980,8 +980,8 @@ static void emit_ldreg(int dest, expressionS *src)
     if (src->X_md && src->X_op != O_register)
     {
       q = frag_more(1);
-      *q = 0xFA;
-      emit_word(src);
+      *q = 0xF0;
+      emit_byte(src, BFD_RELOC_8);
       break;
     }
 
@@ -1066,7 +1066,6 @@ static const char *emit_ld(char prefix_in ATTRIBUTE_UNUSED,
   expressionS dst, src;
   const char  *p;
   char        *q;
-  char        opcode;
 
   p = parse_exp(args, &dst);
   if (*p++ != ',')
@@ -1104,22 +1103,21 @@ static const char *emit_ld(char prefix_in ATTRIBUTE_UNUSED,
   default:
     if (src.X_md || src.X_op != O_register)
       ill_op();
-    opcode = 0;
     switch (src.X_add_number)
     {
     case REG_A:
-      opcode = 0xEA; break;
-    case REG_SP:
-      opcode = 0x08; break;
-    }
-    if (opcode)
-    {
       q = frag_more(1);
-      *q = opcode;
+      *q = 0xE0;
+      emit_byte(&dst, BFD_RELOC_8);
+      break;
+    case REG_SP:
+      q = frag_more(1);
+      *q = 0x08;
       emit_word(&dst);
-    }
-    else
+      break;
+    default:
       ill_op();
+    }
   }
   return p;
 }
@@ -1140,6 +1138,41 @@ static const char *emit_ldhl(char prefix ATTRIBUTE_UNUSED, char opcode, const ch
   q = frag_more(1);
   *q = opcode;
   emit_byte(&term, BFD_RELOC_Z80_DISP8);
+
+  return p;
+}
+
+static const char *emit_ldx(char prefix ATTRIBUTE_UNUSED,
+                            char opcode ATTRIBUTE_UNUSED,
+                            const char *args)
+{
+  expressionS dst, src;
+  const char  *p;
+  char        *q;
+
+  p = parse_exp(args, &dst);
+  if (*p++ != ',')
+    error (_("bad instruction syntax"));
+  p = parse_exp(p, &src);
+
+  if (!dst.X_md && src.X_md &&
+      dst.X_op == O_register && src.X_op != O_register &&
+      dst.X_add_number == REG_A)
+  {
+    q = frag_more(1);
+    *q = 0xFA;
+    emit_word(&src);
+  }
+  else if (dst.X_md && !src.X_md &&
+      dst.X_op != O_register && src.X_op == O_register &&
+      src.X_add_number == REG_A)
+  {
+    q = frag_more(1);
+    *q = 0xEA;
+    emit_word(&dst);
+  }
+  else
+    ill_op();
 
   return p;
 }
@@ -1348,6 +1381,7 @@ static table_t instab[] =
   { "ldh",  0x00, 0x00, emit_ldh },
   { "ldhl", 0x00, 0xF8, emit_ldhl },
   { "ldi",  0x22, 0x2A, emit_ldid },
+  { "ldx",  0x00, 0x00, emit_ldx },
   { "nop",  0x00, 0x00, emit_insn },
   { "or",   0x00, 0xB0, emit_s },
   { "pop",  0x00, 0xC1, emit_pop },
