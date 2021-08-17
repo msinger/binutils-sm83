@@ -1,4 +1,4 @@
-/* BFD back-end for Sharp LR35902 COFF binaries.
+/* BFD back-end for Sharp SM83 COFF binaries.
    Copyright (C) 2005-2018 Free Software Foundation, Inc.
 
    This file is part of BFD, the Binary File Descriptor library.
@@ -22,7 +22,7 @@
 #include "bfd.h"
 #include "libbfd.h"
 #include "bfdlink.h"
-#include "coff/lr35902.h"
+#include "coff/sm83.h"
 #include "coff/internal.h"
 #include "libcoff.h"
 
@@ -59,8 +59,8 @@ static reloc_howto_type r_off8 =
         FALSE);
 
 
-#define BADMAG(x) LR35902BADMAG(x)
-#define LR35902 1 /* Customize coffcode.h. */
+#define BADMAG(x) SM83BADMAG(x)
+#define SM83 1 /* Customize coffcode.h. */
 #define __A_MAGIC_SET__
 
 /* Code to swap in the reloc. */
@@ -105,7 +105,7 @@ static void rtype2howto(arelent *internal, struct internal_reloc *dst)
 #define RTYPE2HOWTO(internal, relocentry) rtype2howto(internal, relocentry)
 
 static reloc_howto_type *
-coff_lr35902_reloc_type_lookup(bfd *abfd ATTRIBUTE_UNUSED,
+coff_sm83_reloc_type_lookup(bfd *abfd ATTRIBUTE_UNUSED,
                                bfd_reloc_code_real_type code)
 {
   switch (code)
@@ -123,7 +123,7 @@ coff_lr35902_reloc_type_lookup(bfd *abfd ATTRIBUTE_UNUSED,
 }
 
 static reloc_howto_type *
-coff_lr35902_reloc_name_lookup(bfd *abfd ATTRIBUTE_UNUSED,
+coff_sm83_reloc_name_lookup(bfd *abfd ATTRIBUTE_UNUSED,
                                const char *r_name)
 {
   if (strcasecmp(r_imm8.name, r_name) == 0)
@@ -258,8 +258,8 @@ static void extra_case(bfd                   *in_abfd,
 }
 
 #define coff_reloc16_extra_cases   extra_case
-#define coff_bfd_reloc_type_lookup coff_lr35902_reloc_type_lookup
-#define coff_bfd_reloc_name_lookup coff_lr35902_reloc_name_lookup
+#define coff_bfd_reloc_type_lookup coff_sm83_reloc_type_lookup
+#define coff_bfd_reloc_name_lookup coff_sm83_reloc_name_lookup
 
 #ifndef bfd_pe_print_pdata
 #define bfd_pe_print_pdata NULL
@@ -274,6 +274,6 @@ static void extra_case(bfd                   *in_abfd,
 #undef  coff_bfd_relax_section
 #define coff_bfd_relax_section bfd_coff_reloc16_relax_section
 
-CREATE_LITTLE_COFF_TARGET_VEC(lr35902_coff_vec, "coff-lr35902", 0,
+CREATE_LITTLE_COFF_TARGET_VEC(sm83_coff_vec, "coff-sm83", 0,
                               SEC_CODE | SEC_DATA, 0, NULL,
                               COFF_SWAP_TABLE)

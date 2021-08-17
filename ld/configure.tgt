@@ -387,8 +387,6 @@ iq2000-*-elf)		targ_emul=elf32iq2000 ; targ_extra_emuls="elf32iq10"
 lm32-*-*linux*)		targ_emul=elf32lm32fd ;;
 lm32-*-*)		targ_emul=elf32lm32 ; targ_extra_emuls="elf32lm32fd"
 			;;
-lr35902-*-coff)		targ_emul=lr35902
-			;;
 m32c-*-elf | m32c-*-rtems*)
 			targ_emul=elf32m32c
 			;;
@@ -689,6 +687,7 @@ sh-*-nto*)		targ_emul=shelf_nto
 sh-*-pe)		targ_emul=shpe ;
 			targ_extra_ofiles="deffilep.o pe-dll.o" ;;
 sh-*-*)			targ_emul=sh; targ_extra_emuls=shl ;;
+sm83-*-coff)		targ_emul=sm83 ;;
 sparc64-*-freebsd* | sparcv9-*-freebsd* | sparc64-*-kfreebsd*-gnu | sparcv9-*-kfreebsd*-gnu)
 			targ_emul=elf64_sparc_fbsd
 			targ_extra_emuls="elf64_sparc elf32_sparc"

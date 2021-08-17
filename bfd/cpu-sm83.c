@@ -1,4 +1,4 @@
-/* BFD library support routines for the Sharp LR35902 CPU.
+/* BFD library support routines for the Sharp SM83 CPU.
    Copyright (C) 2005-2018 Free Software Foundation, Inc.
 
    This file is part of BFD, the Binary File Descriptor library.
@@ -22,15 +22,15 @@
 #include "bfd.h"
 #include "libbfd.h"
 
-const bfd_arch_info_type bfd_lr35902_arch =
+const bfd_arch_info_type bfd_sm83_arch =
   {
     16,                     /* word size */
     16,                     /* ptr size */
     8,                      /* byte size */
-    bfd_arch_lr35902,       /* enum bfd_architecture arch */
+    bfd_arch_sm83,          /* enum bfd_architecture arch */
     NULL,                   /* Machine value, used to distinguish between variants */
-    "lr35902",              /* Architecture name (short version) */
-    "lr35902",              /* Architecture name (long version) */
+    "sm83",                 /* Architecture name (short version) */
+    "sm83",                 /* Architecture name (long version) */
     0,                      /* Section alignment power */
     TRUE,                   /* True if this is the default machine for the architecture */
     bfd_default_compatible, /* Function to call to determine if two different architectures are compatible */

@@ -1,4 +1,4 @@
-/* coff information for Sharp LR35902
+/* coff information for Sharp SM83
    Copyright (C) 2005-2018 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@
 /* Type of cpu is stored in flags. */
 #define F_MACHMASK 0xF000
 
-/* LR35902 COFF encodes the section alignment in the section header flags. */
+/* SM83 COFF encodes the section alignment in the section header flags. */
 #define COFF_ALIGN_IN_SECTION_HEADER 1
 #define COFF_ALIGN_IN_S_FLAGS 1
 #define F_ALGNMASK 0x0F00
@@ -30,9 +30,9 @@
 /* result is a power of two */
 #define COFF_DECODE_ALIGNMENT(X) (((X)>>8)&0xF)
 
-#define LR35902MAGIC 0x8C3E
+#define SM83MAGIC 0x8C3E
 
-#define LR35902BADMAG(x) (((x).f_magic != LR35902MAGIC))
+#define SM83BADMAG(x) (((x).f_magic != SM83MAGIC))
 
 /* Relocation directives. */
 

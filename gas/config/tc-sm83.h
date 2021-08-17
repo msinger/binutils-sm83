@@ -1,4 +1,4 @@
-/* this is tc-lr35902.h
+/* this is tc-sm83.h
    Copyright (C) 2005-2018 Free Software Foundation, Inc.
 
    This file is part of GAS, the GNU Assembler.
@@ -18,10 +18,10 @@
    Software Foundation, 51 Franklin Street - Fifth Floor, Boston, MA
    02110-1301, USA.  */
 
-#ifndef TC_LR35902
-#define TC_LR35902
+#ifndef TC_SM83
+#define TC_SM83
 
-#define TARGET_ARCH   bfd_arch_lr35902
+#define TARGET_ARCH   bfd_arch_sm83
 #define BFD_ARCH      TARGET_ARCH
 #define COFF_MAGIC    0x8C3E
 #define TARGET_MACH   0
@@ -51,13 +51,13 @@
   (as_fatal(_("estimate_size_before_relax called")), 1)
 
 /* Define some functions to be called by generic code.  */
-#define md_end lr35902_md_end
-#define md_start_line_hook() { if (lr35902_start_line_hook()) continue; }
-#define TC_CONS_FIX_NEW(f,w,s,e,r)  lr35902_cons_fix_new((f), (w), (s), (e))
+#define md_end sm83_md_end
+#define md_start_line_hook() { if (sm83_start_line_hook()) continue; }
+#define TC_CONS_FIX_NEW(f,w,s,e,r)  sm83_cons_fix_new((f), (w), (s), (e))
 
-extern void lr35902_md_end(void);
-extern int lr35902_start_line_hook(void);
-extern void lr35902_cons_fix_new(fragS *, int, int, expressionS *);
+extern void sm83_md_end(void);
+extern int sm83_start_line_hook(void);
+extern void sm83_cons_fix_new(fragS *, int, int, expressionS *);
 
 #define WORKING_DOT_WORD
 

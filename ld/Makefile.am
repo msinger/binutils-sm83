@@ -314,7 +314,6 @@ ALL_EMULATION_SOURCES = \
 	ei386nto.c \
 	ei386pe.c \
 	ei386pe_posix.c \
-	elr35902.c \
 	em32relf.c \
 	em32relf_linux.c \
 	em32rlelf.c \
@@ -366,6 +365,7 @@ ALL_EMULATION_SOURCES = \
 	eshlelf_nto.c \
 	eshlelf_vxworks.c \
 	eshpe.c \
+	esm83.c \
 	etic30aout.c \
 	etic30coff.c \
 	etic3xcoff.c \
@@ -1400,9 +1400,6 @@ ei386pe_posix.c: $(srcdir)/emulparams/i386pe_posix.sh \
 ei386pep.c: $(srcdir)/emulparams/i386pep.sh \
   $(srcdir)/emultempl/pep.em $(srcdir)/scripttempl/pep.sc ${GEN_DEPENDS}
 
-elr35902.c: $(srcdir)/emulparams/lr35902.sh \
-  $(srcdir)/emultempl/generic.em $(srcdir)/scripttempl/lr35902.sc ${GEN_DEPENDS}
-
 em32relf.c: $(srcdir)/emulparams/m32relf.sh \
   $(ELF_DEPS) $(srcdir)/scripttempl/elf.sc ${GEN_DEPENDS}
 
@@ -1636,6 +1633,9 @@ eshlelf_vxworks.c: $(srcdir)/emulparams/shlelf_vxworks.sh \
 
 eshpe.c: $(srcdir)/emulparams/shpe.sh \
   $(srcdir)/emultempl/pe.em $(srcdir)/scripttempl/pe.sc ${GEN_DEPENDS}
+
+esm83.c: $(srcdir)/emulparams/sm83.sh \
+  $(srcdir)/emultempl/generic.em $(srcdir)/scripttempl/sm83.sc ${GEN_DEPENDS}
 
 etic30aout.c: $(srcdir)/emulparams/tic30aout.sh \
   $(srcdir)/emultempl/generic.em $(srcdir)/scripttempl/tic30aout.sc ${GEN_DEPENDS}

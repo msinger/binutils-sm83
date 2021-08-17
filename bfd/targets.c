@@ -681,7 +681,6 @@ extern const bfd_target l1om_elf64_vec;
 extern const bfd_target l1om_elf64_fbsd_vec;
 extern const bfd_target lm32_elf32_vec;
 extern const bfd_target lm32_elf32_fdpic_vec;
-extern const bfd_target lr35902_coff_vec;
 extern const bfd_target m32c_elf32_vec;
 extern const bfd_target m32r_elf32_vec;
 extern const bfd_target m32r_elf32_le_vec;
@@ -796,6 +795,7 @@ extern const bfd_target sh_elf32_vxworks_vec;
 extern const bfd_target sh_elf32_vxworks_le_vec;
 extern const bfd_target sh_pe_le_vec;
 extern const bfd_target sh_pei_le_vec;
+extern const bfd_target sm83_coff_vec;
 extern const bfd_target sparc_elf32_vec;
 extern const bfd_target sparc_elf32_sol2_vec;
 extern const bfd_target sparc_elf32_vxworks_vec;
@@ -1039,8 +1039,6 @@ static const bfd_target * const _bfd_target_vector[] =
 
 	&lm32_elf32_vec,
 
-	&lr35902_coff_vec,
-
 	&m32c_elf32_vec,
 
 	&m32r_elf32_vec,
@@ -1206,6 +1204,8 @@ static const bfd_target * const _bfd_target_vector[] =
 	&sh_elf32_vxworks_le_vec,
 	&sh_pe_le_vec,
 	&sh_pei_le_vec,
+
+	&sm83_coff_vec,
 
 	&sparc_elf32_vec,
 	&sparc_elf32_sol2_vec,

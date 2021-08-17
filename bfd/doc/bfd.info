@@ -8061,7 +8061,7 @@ architecture, containing, for example, 68020 for Motorola 68020.
        bfd_arch_nfp,       /* Netronome Flow Processor */
      #define bfd_mach_nfp3200       0x3200
      #define bfd_mach_nfp6000       0x6000
-       bfd_arch_lr35902,   /* GameBoy CPU Sharp LR35902 */
+       bfd_arch_sm83,      /* GameBoy CPU Sharp SM83 (LR35902) */
        bfd_arch_last
        };
 
@@ -14094,37 +14094,37 @@ Node: Core Files262492
 Node: Targets264530
 Node: bfd_target266505
 Node: Architectures291970
-Node: Opening and Closing321749
-Node: Internal339924
-Node: File Caching346247
-Node: Linker Functions348165
-Node: Creating a Linker Hash Table349839
-Node: Adding Symbols to the Hash Table351578
-Node: Differing file formats352478
-Node: Adding symbols from an object file354203
-Node: Adding symbols from an archive356353
-Node: Performing the Final Link358699
-Node: Information provided by the linker359940
-Node: Relocating the section contents361094
-Node: Writing the symbol table362846
-Node: Hash Tables369995
-Node: Creating and Freeing a Hash Table371193
-Node: Looking Up or Entering a String372443
-Node: Traversing a Hash Table373696
-Node: Deriving a New Hash Table Type374485
-Node: Define the Derived Structures375551
-Node: Write the Derived Creation Routine376632
-Node: Write Other Derived Routines379257
-Node: BFD back ends380572
-Node: What to Put Where380842
-Node: aout381022
-Node: coff387304
-Node: elf415455
-Node: mmo415856
-Node: File layout416726
-Node: Symbol-table422640
-Node: mmo section mapping426403
-Node: GNU Free Documentation License430057
-Node: BFD Index455120
+Node: Opening and Closing321756
+Node: Internal339931
+Node: File Caching346254
+Node: Linker Functions348172
+Node: Creating a Linker Hash Table349846
+Node: Adding Symbols to the Hash Table351585
+Node: Differing file formats352485
+Node: Adding symbols from an object file354210
+Node: Adding symbols from an archive356360
+Node: Performing the Final Link358706
+Node: Information provided by the linker359947
+Node: Relocating the section contents361101
+Node: Writing the symbol table362853
+Node: Hash Tables370002
+Node: Creating and Freeing a Hash Table371200
+Node: Looking Up or Entering a String372450
+Node: Traversing a Hash Table373703
+Node: Deriving a New Hash Table Type374492
+Node: Define the Derived Structures375558
+Node: Write the Derived Creation Routine376639
+Node: Write Other Derived Routines379264
+Node: BFD back ends380579
+Node: What to Put Where380849
+Node: aout381029
+Node: coff387311
+Node: elf415462
+Node: mmo415863
+Node: File layout416733
+Node: Symbol-table422647
+Node: mmo section mapping426410
+Node: GNU Free Documentation License430064
+Node: BFD Index455127
 
 End Tag Table

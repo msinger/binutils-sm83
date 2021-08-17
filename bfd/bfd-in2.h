@@ -2387,7 +2387,7 @@ enum bfd_architecture
   bfd_arch_nfp,       /* Netronome Flow Processor */
 #define bfd_mach_nfp3200       0x3200
 #define bfd_mach_nfp6000       0x6000
-  bfd_arch_lr35902,   /* GameBoy CPU Sharp LR35902 */
+  bfd_arch_sm83,      /* GameBoy CPU Sharp SM83 (LR35902) */
   bfd_arch_last
   };
 

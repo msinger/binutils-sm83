@@ -539,7 +539,6 @@ ALL_MACHINES = \
 	cpu-ip2k.lo \
 	cpu-iq2000.lo \
 	cpu-lm32.lo \
-	cpu-lr35902.lo \
 	cpu-m10200.lo \
 	cpu-m10300.lo \
 	cpu-m32c.lo \
@@ -576,6 +575,7 @@ ALL_MACHINES = \
 	cpu-s390.lo \
 	cpu-score.lo \
 	cpu-sh.lo \
+	cpu-sm83.lo \
 	cpu-sparc.lo \
 	cpu-spu.lo \
 	cpu-tic30.lo \
@@ -625,7 +625,6 @@ ALL_MACHINES_CFILES = \
 	cpu-ip2k.c \
 	cpu-iq2000.c \
 	cpu-lm32.c \
-	cpu-lr35902.c \
 	cpu-m10200.c \
 	cpu-m10300.c \
 	cpu-m32c.c \
@@ -662,6 +661,7 @@ ALL_MACHINES_CFILES = \
 	cpu-s390.c \
 	cpu-score.c \
 	cpu-sh.c \
+	cpu-sm83.c \
 	cpu-sparc.c \
 	cpu-spu.c \
 	cpu-tic30.c \
@@ -694,10 +694,10 @@ BFD32_BACKENDS = \
 	cf-i386lynx.lo \
 	coff-go32.lo \
 	coff-i386.lo \
-	coff-lr35902.lo \
 	coff-mips.lo \
 	coff-rs6000.lo \
 	coff-sh.lo \
+	coff-sm83.lo \
 	coff-stgo32.lo \
 	coff-tic30.lo \
 	coff-tic4x.lo \
@@ -832,10 +832,10 @@ BFD32_BACKENDS_CFILES = \
 	cf-i386lynx.c \
 	coff-go32.c \
 	coff-i386.c \
-	coff-lr35902.c \
 	coff-mips.c \
 	coff-rs6000.c \
 	coff-sh.c \
+	coff-sm83.c \
 	coff-stgo32.c \
 	coff-tic30.c \
 	coff-tic4x.c \
@@ -1301,10 +1301,10 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/coff-bfd.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/coff-go32.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/coff-i386.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/coff-lr35902.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/coff-mips.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/coff-rs6000.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/coff-sh.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/coff-sm83.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/coff-stgo32.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/coff-tic30.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/coff-tic4x.Plo@am__quote@
@@ -1345,7 +1345,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-k1om.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-l1om.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-lm32.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-lr35902.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-m10200.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-m10300.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-m32c.Plo@am__quote@
@@ -1382,6 +1381,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-s390.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-score.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-sh.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-sm83.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-sparc.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-spu.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cpu-tic30.Plo@am__quote@
