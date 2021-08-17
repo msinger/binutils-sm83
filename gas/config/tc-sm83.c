@@ -993,6 +993,14 @@ static void emit_ldreg(int dest, expressionS *src)
       break;
     }
 
+    if (src->X_md && src->X_op == O_register &&
+        (src->X_add_number == REG_C))
+    {
+      q = frag_more(1);
+      *q = 0xF2;
+      break;
+    }
+
     /* Fall through. */
   case REG_B:
   case REG_C:
@@ -1091,6 +1099,15 @@ static const char *emit_ld(char prefix_in ATTRIBUTE_UNUSED,
         break;
       case REG_HL:
         emit_ldxhl(&src);
+        break;
+      case REG_C:
+        if (!src.X_md && src.X_op == O_register && src.X_add_number == REG_A)
+        {
+          q = frag_more(1);
+          *q = 0xE2;
+        }
+        else
+          ill_op();
         break;
       default:
         ill_op();
