@@ -67,8 +67,8 @@ Example file:
     dec c
     cp c
     jp z, loop2  ; jumps to address 0xff80
-    ldd a, (hl)
-    ldh (c), a
+    ld a, (hld)
+    ld (c), a
     jr loop
 
   ; Code loaded into HRAM (starts at 0xff80)
