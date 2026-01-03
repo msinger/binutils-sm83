@@ -1,11 +1,16 @@
-Binutils for GameBoy
-====================
+Binutils for Game Boy
+=====================
 
 
 Build binutils like this:
 
-  ./configure --target=sm83-gb-coff
-  make all
+  ./configure --target=sm83-coff \
+              --disable-gdb \
+              --disable-readline \
+              --disable-sim \
+              --disable-nls \
+              --enable-deterministic-archives
+  make
   # as root:
   make install
 
@@ -85,8 +90,8 @@ Example file:
 
 Build example with:
 
-  sm83-gb-coff-as -o example.o example.s
-  sm83-gb-coff-ld -o example.gb example.o
+  sm83-coff-as -o example.o example.s
+  sm83-coff-ld -o example.gb example.o
 
 Then use rgbfix from the Rednex Game Boy Development System (rgbds):
   rgbfix -fhg example.gb
