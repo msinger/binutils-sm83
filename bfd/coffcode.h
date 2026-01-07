@@ -2232,6 +2232,12 @@ coff_set_arch_mach_hook (bfd *abfd, void * filehdr)
       machine = bfd_mach_riscv64;
       break;
 #endif
+#ifdef SM83MAGIC
+    case SM83MAGIC:
+      arch = bfd_arch_sm83;
+      machine = bfd_mach_sm83_default;
+      break;
+#endif
 #ifdef Z80MAGIC
     case Z80MAGIC:
       arch = bfd_arch_z80;
@@ -2754,6 +2760,20 @@ coff_set_flags (bfd * abfd,
 	case bfd_mach_z8001: *flagsp = F_Z8001;	break;
 	case bfd_mach_z8002: *flagsp = F_Z8002;	break;
 	default:	     return false;
+	}
+      return true;
+#endif
+
+#ifdef SM83MAGIC
+    case bfd_arch_sm83:
+      *magicp = SM83MAGIC;
+      switch (bfd_get_mach (abfd))
+	{
+	case bfd_mach_sm83_default:
+	  *flagsp = bfd_get_mach (abfd) << 12;
+	  break;
+	default:
+	  return false;
 	}
       return true;
 #endif

@@ -45,7 +45,7 @@ DEVO_SUPPORT="ar-lib ChangeLog compile config config-ml.in config.guess \
 	COPYING3 COPYING3.LIB depcomp install-sh libtool.m4 ltgcc.m4 \
 	ltmain.sh ltoptions.m4 ltsugar.m4 ltversion.m4 lt~obsolete.m4 \
 	MAINTAINERS Makefile.def Makefile.in Makefile.tpl missing mkdep \
-	mkinstalldirs move-if-change README README-maintainer-mode \
+	mkinstalldirs move-if-change README README-binutils README-maintainer-mode \
 	SECURITY.txt src-release.sh symlink-tree test-driver ylwrap \
         multilib.am ChangeLog.git"
 

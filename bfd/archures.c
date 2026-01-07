@@ -691,6 +691,7 @@ extern const bfd_arch_info_type bfd_rx_arch;
 extern const bfd_arch_info_type bfd_s390_arch;
 extern const bfd_arch_info_type bfd_score_arch;
 extern const bfd_arch_info_type bfd_sh_arch;
+extern const bfd_arch_info_type bfd_sm83_arch;
 extern const bfd_arch_info_type bfd_sparc_arch;
 extern const bfd_arch_info_type bfd_spu_arch;
 extern const bfd_arch_info_type bfd_tic30_arch;
@@ -777,6 +778,7 @@ static const bfd_arch_info_type * const bfd_archures_list[] =
     &bfd_s390_arch,
     &bfd_score_arch,
     &bfd_sh_arch,
+    &bfd_sm83_arch,
     &bfd_sparc_arch,
     &bfd_spu_arch,
     &bfd_tic30_arch,

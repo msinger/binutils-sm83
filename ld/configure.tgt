@@ -913,6 +913,12 @@ sh-*-*)			targ_emul=sh;
 			targ_extra_emuls=shl
 			targ_extra_ofiles=
 			;;
+sm83-*-elf*)		targ_emul=elf32sm83
+			targ_extra_ofiles="ldelf.o ldelfgen.o"
+			;;
+sm83-*-coff)		targ_emul=sm83
+			targ_extra_ofiles=
+			;;
 sparc64-*-freebsd* | sparcv9-*-freebsd* | sparc64-*-kfreebsd*-gnu | sparcv9-*-kfreebsd*-gnu)
 			targ_emul=elf64_sparc_fbsd
 			targ_extra_emuls="elf64_sparc elf32_sparc"

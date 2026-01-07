@@ -1418,6 +1418,7 @@ case $cpu-$vendor in
 			| sh[lb]e \
 			| she[lb] \
 			| shl \
+			| sm83 \
 			| sparc \
 			| sparc64 \
 			| sparc64b \

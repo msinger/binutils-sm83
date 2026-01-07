@@ -327,6 +327,7 @@ if test x${all_targets} = xfalse ; then
 	bfd_s390_arch)		ta="$ta s390-dis.lo s390-opc.lo" ;;
 	bfd_score_arch)		ta="$ta score-dis.lo score7-dis.lo" ;;
 	bfd_sh_arch)		ta="$ta sh-dis.lo cgen-bitset.lo" ;;
+	bfd_sm83_arch)		ta="$ta sm83-dis.lo" ;;
 	bfd_sparc_arch)		ta="$ta sparc-dis.lo sparc-opc.lo" ;;
 	bfd_spu_arch)		ta="$ta spu-dis.lo spu-opc.lo" ;;
 	bfd_tic30_arch)		ta="$ta tic30-dis.lo" ;;

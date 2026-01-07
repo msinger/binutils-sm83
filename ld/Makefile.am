@@ -268,6 +268,7 @@ ALL_EMULATION_SOURCES = \
 	eelf32rl78.c \
 	eelf32rx.c \
 	eelf32rx_linux.c \
+	eelf32sm83.c \
 	eelf32tilegx.c \
 	eelf32tilegx_be.c \
 	eelf32tilepro.c \
@@ -358,6 +359,7 @@ ALL_EMULATION_SOURCES = \
 	eshlelf_nto.c \
 	eshlelf_vxworks.c \
 	eshpe.c \
+	esm83.c \
 	etic30coff.c \
 	etic3xcoff.c \
 	etic3xcoff_onchip.c \

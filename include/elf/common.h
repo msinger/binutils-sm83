@@ -459,6 +459,8 @@
    architecture was derived.  */
 #define EM_CSKY_OLD		EM_MCORE
 
+#define EM_SM83 0x8C3E  /* Sharp SM83 (Game Boy) */
+
 /* See the above comment before you add a new EM_* value here.  */
 
 /* Values for e_version.  */

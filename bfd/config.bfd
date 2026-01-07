@@ -215,6 +215,7 @@ rs6000)		 targ_archs="bfd_rs6000_arch bfd_powerpc_arch" ;;
 s12z*)		 targ_archs=bfd_s12z_arch ;;
 s390*)		 targ_archs=bfd_s390_arch ;;
 sh*)		 targ_archs=bfd_sh_arch ;;
+sm83)		 targ_archs=bfd_sm83_arch ;;
 sparc*)		 targ_archs=bfd_sparc_arch ;;
 spu*)            targ_archs=bfd_spu_arch ;;
 tilegx*)	 targ_archs=bfd_tilegx_arch ;;
@@ -1333,6 +1334,16 @@ case "${targ}" in
     targ_defvec=sh_coff_vec
     targ_selvecs="sh_coff_vec sh_coff_le_vec sh_coff_small_vec sh_coff_small_le_vec"
     targ_underscore=yes
+    ;;
+
+  sm83-*-coff)
+    targ_defvec=sm83_coff_vec
+    targ_underscore=no
+    ;;
+
+  sm83-*-elf)
+    targ_defvec=sm83_elf32_vec
+    targ_underscore=no
     ;;
 
   sparc-*-solaris2.[0-6] | sparc-*-solaris2.[0-6].*)

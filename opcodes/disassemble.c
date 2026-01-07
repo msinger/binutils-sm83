@@ -86,6 +86,7 @@
 #define ARCH_s12z
 #define ARCH_s390
 #define ARCH_sh
+#define ARCH_sm83
 #define ARCH_sparc
 #define ARCH_spu
 #define ARCH_tic30
@@ -411,6 +412,11 @@ disassembler (enum bfd_architecture a,
 #ifdef ARCH_sh
     case bfd_arch_sh:
       disassemble = print_insn_sh;
+      break;
+#endif
+#ifdef ARCH_sm83
+    case bfd_arch_sm83:
+      disassemble = print_insn_sm83;
       break;
 #endif
 #ifdef ARCH_sparc

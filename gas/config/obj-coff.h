@@ -69,6 +69,11 @@
 #define TARGET_FORMAT "coff-z8k"
 #endif
 
+#ifdef TC_SM83
+#include "coff/sm83.h"
+#define TARGET_FORMAT "coff-sm83"
+#endif
+
 #ifdef TC_SH
 
 #ifdef TE_PE

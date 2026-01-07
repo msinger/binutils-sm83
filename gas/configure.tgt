@@ -400,6 +400,8 @@ case ${generic_target} in
   sh-*-kaos*)				fmt=elf ;;
   shle*-*-kaos*)			fmt=elf ;;
 
+  sm83-*-coff)				fmt=coff ;;
+
   sparc-*-haiku*)			fmt=elf em=haiku ;;
   sparc-*-linux-*)			fmt=elf em=linux ;;
   sparc-*-solaris*)			fmt=elf em=solaris ;;
@@ -450,7 +452,7 @@ esac
 
 case ${cpu_type} in
   aarch64 | alpha | arm | csky | i386 | ia64 | kvx | microblaze | mips | ns32k | \
-  or1k | or1knd | pdp11 | ppc | riscv | sh | sparc | z80 | z8k | loongarch)
+  or1k | or1knd | pdp11 | ppc | riscv | sh | sm83 | sparc | z80 | z8k | loongarch)
     bfd_gas=yes
     ;;
 esac
