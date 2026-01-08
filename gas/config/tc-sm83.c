@@ -1026,7 +1026,7 @@ emit_sx (char opcode, expressionS *arg_p)
       emit_mx (0, opcode, 0, arg_p);
       break;
     default:
-      if (arg_p->X_md)
+      if (arg_p->X_md || arg_p->X_op == O_add)
 	ill_op ();
       else
 	{
@@ -1216,7 +1216,7 @@ emit_add (char prefix, char opcode, const char *args)
 	break;
       case REG_SP:
 	p = parse_exp (p, &term);
-	if (term.X_md || term.X_op == O_register)
+	if (term.X_md || term.X_op == O_register || term.X_op == O_add)
 	  ill_op ();
 	else
 	  {
@@ -1598,6 +1598,8 @@ emit_ld (char prefix_in ATTRIBUTE_UNUSED, char opcode_in ATTRIBUTE_UNUSED,
 	}
       else if (src.X_op == O_register)
 	emit_ld_r_r (&dst, &src);
+      else if (src.X_op == O_add)
+	ill_op ();
       else if (dst.X_add_number <= 7)
 	emit_ld_r_n (&dst, &src);
       else
@@ -1719,7 +1721,7 @@ emit_ldhl (char prefix ATTRIBUTE_UNUSED, char opcode, const char *args)
 
   p = parse_exp (p, &src);
   if (dst.X_md || dst.X_op != O_register || dst.X_add_number != REG_SP
-      || src.X_md || src.X_op == O_register || src.X_op == O_md1)
+      || src.X_md || src.X_op == O_register || src.X_op == O_md1 || src.X_op == O_add)
     ill_op ();
   else
     {
@@ -1761,7 +1763,7 @@ emit_data (int size ATTRIBUTE_UNUSED)
       else
 	{
 	  p = parse_exp (p, &exp);
-	  if (exp.X_op == O_md1 || exp.X_op == O_register)
+	  if (exp.X_op == O_md1 || exp.X_op == O_register || exp.X_op == O_add)
 	    {
 	      ill_op ();
 	      break;
@@ -1836,7 +1838,7 @@ sm83_cons (int size)
   do
     {
       p = parse_exp (p, &exp);
-      if (exp.X_op == O_md1 || exp.X_op == O_register)
+      if (exp.X_op == O_md1 || exp.X_op == O_register || exp.X_op == O_add)
 	{
 	  ill_op ();
 	  break;
