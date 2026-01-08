@@ -542,6 +542,9 @@ contains_register (symbolS *sym)
     {
       expressionS *ex = symbol_get_value_expression (sym);
 
+      if (!ex)
+	return false;
+
       switch (ex->X_op)
 	{
 	case O_register:
@@ -645,11 +648,16 @@ parse_exp_not_indexed (const char *s, expressionS *op)
 static int
 unify_indexed (expressionS *op)
 {
-  if (O_register != symbol_get_value_expression (op->X_add_symbol)->X_op)
+  if (!op->X_add_symbol)
     return 0;
+
+  expressionS *lhs = symbol_get_value_expression (op->X_add_symbol);
+  if (!lhs || lhs->X_op != O_register)
+    return 0;
+
   int rnum = symbol_get_value_expression (op->X_add_symbol)->X_add_number;
 
-  if ( contains_register (op->X_op_symbol))
+  if (contains_register (op->X_op_symbol))
     {
       ill_op ();
       return 0;
@@ -839,7 +847,10 @@ emit_data_val (expressionS *val, int size)
       || (val->X_op == O_md1)
       || contains_register (val->X_add_symbol)
       || contains_register (val->X_op_symbol))
-    ill_op ();
+    {
+      ill_op ();
+      return;
+    }
 
   if (size <= 2 && val->X_op_symbol)
     {
@@ -1130,9 +1141,12 @@ emit_jp (char prefix, char opcode, const char *args)
     {
       if (addr.X_md)
 	ill_op ();
-      q = frag_more (1);
-      *q = opcode;
-      emit_word (&addr);
+      else
+	{
+	  q = frag_more (1);
+	  *q = opcode;
+	  emit_word (&addr);
+	}
     }
   return p;
 }
@@ -1204,9 +1218,12 @@ emit_add (char prefix, char opcode, const char *args)
 	p = parse_exp (p, &term);
 	if (term.X_md || term.X_op == O_register)
 	  ill_op ();
-	q = frag_more (1);
-	*q = 0xE8;
-	emit_byte (&term, BFD_RELOC_Z80_DISP8);
+	else
+	  {
+	    q = frag_more (1);
+	    *q = 0xE8;
+	    emit_byte (&term, BFD_RELOC_Z80_DISP8);
+	  }
 	break;
       case REG_HL:
 	p = parse_exp (p, &term);
@@ -1605,7 +1622,10 @@ emit_lddldi (char prefix ATTRIBUTE_UNUSED, char opcode, const char *args)
   p = parse_exp (p, &src);
 
   if (dst.X_op != O_register || src.X_op != O_register)
-    ill_op ();
+    {
+      ill_op ();
+      return p;
+    }
 
   if (dst.X_md != 0
       && dst.X_add_number == REG_HL
@@ -1618,7 +1638,10 @@ emit_lddldi (char prefix ATTRIBUTE_UNUSED, char opcode, const char *args)
       && src.X_add_number == REG_HL)
     opcode |= 0x08; /* LDx A,(HL) */
   else
-    ill_op ();
+    {
+      ill_op ();
+      return p;
+    }
 
   q = frag_more (1);
   *q = opcode;
@@ -1698,9 +1721,12 @@ emit_ldhl (char prefix ATTRIBUTE_UNUSED, char opcode, const char *args)
   if (dst.X_md || dst.X_op != O_register || dst.X_add_number != REG_SP
       || src.X_md || src.X_op == O_register || src.X_op == O_md1)
     ill_op ();
-  q = frag_more (1);
-  *q = opcode;
-  emit_byte (&src, BFD_RELOC_Z80_DISP8);
+  else
+    {
+      q = frag_more (1);
+      *q = opcode;
+      emit_byte (&src, BFD_RELOC_Z80_DISP8);
+    }
   return p;
 }
 
